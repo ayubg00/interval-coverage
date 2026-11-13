@@ -36,6 +36,14 @@ public final class IntervalCoverage1Test {
         assertSpans(new IntervalCoverage1());
     }
 
+    /** A span exposes its inclusive start and exclusive end unchanged. */
+    @Test
+    public void spanPreservesEndpointLimits() {
+        Span span = new Span(0, Integer.MAX_VALUE);
+        assertEquals(0, span.start());
+        assertEquals(Integer.MAX_VALUE, span.end());
+    }
+
     /** A span can cover the entire valid domain. */
     @Test
     public void coverOnEmptyAcceptsBothEndpointLimits() {

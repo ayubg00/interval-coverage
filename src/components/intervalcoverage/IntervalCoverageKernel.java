@@ -31,7 +31,7 @@ public interface IntervalCoverageKernel extends Standard<IntervalCoverage> {
          *            the inclusive start
          * @param end
          *            the exclusive end
-         * @requires 0 <= start < end
+         * @requires {@code 0 <= start < end}
          * @ensures this.start = start and this.end = end
          */
         public Span(int start, int end) {
@@ -77,7 +77,7 @@ public interface IntervalCoverageKernel extends Standard<IntervalCoverage> {
      * @param index
      *            the zero-based position in ascending start order
      * @return the immutable span at that position
-     * @requires 0 <= index < spanCount
+     * @requires {@code 0 <= index < spanCount}
      * @ensures spanAt is the maximal covered span at index
      */
     Span spanAt(int index);

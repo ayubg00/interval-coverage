@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * supports constant-time indexed reads and linear scans for updates.
  *
  * @convention rep is nonnull and contains only nonnull spans with
- *             0 <= start < end. In list order, each span's end is strictly
+ *             {@code 0 <= start < end}. In list order, each span's end is strictly
  *             less than the next span's start.
  * @correspondence this is the union of the integer positions in the spans
  *                 in rep

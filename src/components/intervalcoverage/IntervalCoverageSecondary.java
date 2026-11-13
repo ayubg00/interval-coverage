@@ -13,6 +13,12 @@ public abstract class IntervalCoverageSecondary implements IntervalCoverage {
      */
     private static final int HASH_MULTIPLIER = 31;
 
+    /**
+     * Allows subclasses to initialize their own representation.
+     */
+    protected IntervalCoverageSecondary() {
+    }
+
     @Override
     public final boolean covers(Span span) {
         assert span != null : "Requires: span is not null";

@@ -1,89 +1,72 @@
-# Portfolio Project
+# Interval Coverage
 
-The purpose of this repo is to provide a framework for creating your own
-component in the software sequence discipline. If you were unsure whether
-or not to make your own, consider the following testimonial:
+One instance represents the integer positions currently covered on a single
+axis. Client programs can add or subtract coverage, check whether a range is
+fully covered, and find the first gap of a requested length. Positions can
+represent minutes, byte offsets, or any other unit chosen by the client.
 
-> I really enjoyed the portfolio project! It gave me a stronger understanding
-> of the OSU software discipline while also giving me the flexibility to
-> design something that reflected my interests. This made the experience
-> rewarding and enjoyable as I created a product I was proud of!
+A new instance is empty. A span `[start, end)` includes its start and excludes
+its end, with `0 <= start < end <= Integer.MAX_VALUE`. Adding overlapping or
+adjacent spans combines them. Subtracting an interior span can split coverage
+in two. The component stores coverage only. Clients own booking records,
+time zones, file contents, and decisions about which spans to add or remove.
 
-## Recommended Steps to Get Started
+## API design
 
-When starting your portfolio project, the following steps should make your life
-a bit easier.
+See the [hierarchy and design notes](doc/INTERVAL-COVERAGE.md). Use
+`IntervalCoverage` as the variable type and `IntervalCoverage1` to construct an
+instance. The immutable `Span` record supplies the endpoints.
 
-### Step 1: Create a Repo From This Template
+| Operation | Result |
+| --- | --- |
+| `cover(span)` | Adds the span's positions to the covered set. |
+| `uncover(span)` | Removes the span's positions from the covered set. |
+| `spanCount()`, `spanAt(index)` | Enumerate the maximal covered spans in ascending start order. |
+| `covers(span)` | Reports whether the entire span is covered. |
+| `firstGap(window, minimumLength)` | Finds the full first uncovered span of at least the requested length, clipped to the window. |
+| `coveredLength()` | Counts covered positions once. |
+| `newInstance()`, `clear()`, `transferFrom(source)` | Create, reset, or move coverage using OSU's `Standard` contract. |
 
-<!-- TODO: use GitHub to create a repo from this template -->
+Coverage has value equality across implementations that extend
+`IntervalCoverageSecondary`. Its hash code can change when its value changes,
+so use a stable value as a hash-based collection key.
 
-Assuming you're reading this README from GitHub, you can make use of this
-repo by clicking the `Use this template` button in the top-right corner of
-this page. If you can't find the button, [this link][use-this-template]
-should work as well. Personally, I would recommend using the
-`Create a new repository` option, which will allow you to name the
-repository after your component. Given that you will be submitting pull
-requests to me through Carmen, you'll want to make sure your repository
-is public. Then, you can click `Create repository`. After that, you can
-go through all the usual steps of cloning a repository on your system to
-get to work. I use GitHub Desktop to clone projects, and it has a nice
-feature of letting you open a repo directly in VSCode from the
-`Repository` menu.
+## Build and test
 
-### Step 2: Install Recommended Plugins
+Use JDK 17 or newer. Put the official
+[OSU components.jar](https://cse22x1.engineering.osu.edu/common/components.jar),
+[JUnit 4.13.2](https://repo.maven.apache.org/maven2/junit/junit/4.13.2/junit-4.13.2.jar),
+and [Hamcrest Core 1.3](https://repo.maven.apache.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar)
+in `lib/`. The template ignores dependency JARs and compiled classes. VS Code
+uses the template's recommended extensions, formatter, and Checkstyle settings.
 
-<!-- TODO: install recommended plugins and delete this comment -->
+Run these commands from the repository root on macOS or Linux:
 
-When you open VSCode with this project, you should get a notification in the
-bottom right corner that there are some recommended extensions to install.
-Click install all. If you ignored this message or it never came up, feel free
-to press CTRL+SHIFT+P and type "Show Recommended Extensions". Install all of the
-extensions listed.
+```sh
+mkdir -p bin
+javac --release 17 -Xlint:all -Werror -cp 'lib/*' -d bin $(find src test -name '*.java')
+java -ea -cp 'bin:lib/*' org.junit.runner.JUnitCore \
+  components.intervalcoverage.IntervalCoverage1Test \
+  components.intervalcoverage.IntervalCoverageSecondaryTest
+```
 
-### Step 3: Install the Latest JDK
+Use `-ea` to enable the OSU contract assertions. With a local Checkstyle 9.3
+distribution, run the template rules on both source trees:
 
-<!-- TODO: install latest JDK and delete this comment -->
+```sh
+java -jar /path/to/checkstyle-9.3-all.jar -c .vscode/osu-cse-checkstyle-config.xml src test
+```
 
-If you do not have an available JDK on your system, you may be prompted to
-install one by VSCode. The default seems to be Red Hat's OpenJDK, which seems to
-require you to register for an account or to install on the command line.
-Regardless, there is no mac support. As a result, I would just recommend
-installing the latest JDK [directly from Oracle's site][jdk-downloads].
+## Run the examples
 
-### Step 4: Add Key Libraries to Project
+```sh
+java -ea -cp 'bin:lib/*' examples.RoomScheduler
+java -ea -cp 'bin:lib/*' examples.ChunkReceipt
+```
 
-<!-- TODO: add key libraries to project and delete this comment -->
-
-As you are probably all aware at this point, you need the components jar to get
-anything running. My advice is to [download it from here][components-jar]. Then,
-drop it into the `lib` folder in the project. Git automatically ignores anything
-you put here by default, so don't worry about committing it to version control.
-
-Similarly, you will need the testing APIs (e.g., JUnit). Perhaps the easiest way
-to include them in your project is to click the beaker symbol in the left
-sidebar; it's right below the extensions button which looks like four squares.
-If you do not see this button, try creating a Java file in `src`. From there,
-you can click "Enable Java Tests" and then click "JUnit" from the
-dropdown. That's it! You should now see the two JUnit libraries in the lib
-folder.
-
-**Note**: if you're using VSCode for class projects, you might be wondering
-why you never had to do this. In general, it's bad practice to commit binaries
-to version control. However, we have no way of managing dependencies with the
-custom `components.jar`, so I included them directly in the template. I did not
-include them here, so you could see how it might be done from scratch. If at any
-point you're struggling with Step 3, just copy the lib folder from the monorepo
-template.
-
-## Next Steps
-
-<!-- TODO: navigate to doc/DIRECTIONS.md and delete this comment -->
-
-Now that you have everything setup, you can begin crafting your component. All
-of the directions you need to get started are in the
-[DIRECTIONS.md](doc/DIRECTIONS.md) file under the docs folder.
-
-[components-jar]: https://cse22x1.engineering.osu.edu/common/components.jar
-[jdk-downloads]: https://www.oracle.com/java/technologies/downloads/
-[use-this-template]: https://github.com/new?template_name=portfolio-project&template_owner=jrg94
+- [RoomScheduler](src/examples/RoomScheduler.java) removes a cancelled booking,
+  finds the first gap that fits a 45-minute meeting, and books part of it.
+  The new booking runs from 10:00 to 10:45.
+- [ChunkReceipt](src/examples/ChunkReceipt.java) records out-of-order,
+  overlapping, and duplicate arrivals. It counts 10 of 12 distinct bytes,
+  requests exactly `[6, 8)`, and confirms completion after receipt.
