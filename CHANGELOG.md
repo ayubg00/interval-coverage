@@ -8,6 +8,16 @@ the following form: YYYY.0M.0D.
 
 ## [Unreleased]
 
+### Added
+
+- Built a layered interval coverage component with canonical spans, range
+  subtraction, and gap queries.
+- Added separate kernel and secondary JUnit suites and runnable room
+  scheduling and file receipt examples.
+- Documented the component hierarchy, storage choice, and build instructions.
+
+### Fixed
+
 - Fixed an issue where the course URLs dropped the `web-sw1` paths
 
 ## [2026.07.06]
