@@ -7,8 +7,10 @@ import components.standard.Standard;
  * positions from its inclusive start to its exclusive end. The initial value
  * covers no positions.
  *
- * <p>In addition to the inherited {@link Standard} contract, the source of
- * {@code transferFrom} must be a distinct object.</p>
+ * <p>
+ * In addition to the inherited {@link Standard} contract, the source of
+ * {@code transferFrom} must be a distinct object.
+ * </p>
  *
  * @mathmodel a subset of the integers from 0 through Integer.MAX_VALUE - 1
  */

@@ -7,10 +7,10 @@ import java.util.ArrayList;
  * supports constant-time indexed reads and linear scans for updates.
  *
  * @convention rep is nonnull and contains only nonnull spans with
- *             {@code 0 <= start < end}. In list order, each span's end is strictly
- *             less than the next span's start.
- * @correspondence this is the union of the integer positions in the spans
- *                 in rep
+ *             {@code 0 <= start < end}. In list order, each span's end is
+ *             strictly less than the next span's start.
+ * @correspondence this is the union of the integer positions in the spans in
+ *                 rep
  */
 public final class IntervalCoverage1 extends IntervalCoverageSecondary {
 
@@ -50,8 +50,7 @@ public final class IntervalCoverage1 extends IntervalCoverageSecondary {
 
     @Override
     public void transferFrom(IntervalCoverage source) {
-        assert source instanceof IntervalCoverage1
-                : "Requires: source has the same runtime type as this";
+        assert source instanceof IntervalCoverage1 : "Requires: same runtime type";
         assert source != this : "Requires: source is not this";
         IntervalCoverage1 localSource = (IntervalCoverage1) source;
         ArrayList<Span> moved = localSource.rep;
@@ -89,7 +88,8 @@ public final class IntervalCoverage1 extends IntervalCoverageSecondary {
         assert span != null : "Requires: span is not null";
         ArrayList<Span> updated = new ArrayList<>();
         for (Span current : this.rep) {
-            if (current.end() <= span.start() || span.end() <= current.start()) {
+            if (current.end() <= span.start()
+                    || span.end() <= current.start()) {
                 updated.add(current);
             } else {
                 if (current.start() < span.start()) {
@@ -110,8 +110,8 @@ public final class IntervalCoverage1 extends IntervalCoverageSecondary {
 
     @Override
     public Span spanAt(int index) {
-        assert 0 <= index && index < this.rep.size()
-                : "Requires: 0 <= index < spanCount";
+        assert 0 <= index
+                && index < this.rep.size() : "Requires: 0 <= index < spanCount";
         return this.rep.get(index);
     }
 }

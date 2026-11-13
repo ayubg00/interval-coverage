@@ -66,7 +66,8 @@ public final class RoomScheduler {
         out.println("45-minute slot before cancellation: "
                 + occupied.firstGap(openHours, REQUESTED_MINUTES).isPresent());
         occupied.uncover(new Span(at(10, 0), at(10, 30)));
-        Optional<Span> available = occupied.firstGap(openHours, REQUESTED_MINUTES);
+        Optional<Span> available = occupied.firstGap(openHours,
+                REQUESTED_MINUTES);
         if (available.isPresent()) {
             int start = available.get().start();
             Span booking = new Span(start, start + REQUESTED_MINUTES);

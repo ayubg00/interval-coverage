@@ -61,8 +61,8 @@ public final class IntervalCoverage1Test {
         coverage.cover(new Span(0, 2));
         coverage.cover(new Span(12, 14));
         coverage.cover(new Span(4, 6));
-        assertSpans(coverage, new Span(0, 2), new Span(4, 6),
-                new Span(8, 10), new Span(12, 14));
+        assertSpans(coverage, new Span(0, 2), new Span(4, 6), new Span(8, 10),
+                new Span(12, 14));
     }
 
     /** One insertion merges spans that overlap or touch on either side. */
@@ -130,7 +130,9 @@ public final class IntervalCoverage1Test {
         assertSpans(coverage, new Span(0, 3), new Span(7, 10));
     }
 
-    /** Subtraction across several spans trims both ends and removes the middle. */
+    /**
+     * Subtraction across several spans trims both ends and removes the middle.
+     */
     @Test
     public void uncoverAcrossSeveralSpans() {
         IntervalCoverageKernel coverage = new IntervalCoverage1();
@@ -167,7 +169,9 @@ public final class IntervalCoverage1Test {
         assertSpans(coverage, new Span(0, 1), new Span(3, 4));
     }
 
-    /** Indexed reads return the first, middle, and last values without removal. */
+    /**
+     * Indexed reads return the first, middle, and last values without removal.
+     */
     @Test
     public void spanAtPreservesState() {
         IntervalCoverageKernel coverage = new IntervalCoverage1();
@@ -227,7 +231,9 @@ public final class IntervalCoverage1Test {
         assertSpans(coverage, new Span(8, 10));
     }
 
-    /** Transfer replaces the receiver and clears the source without aliasing. */
+    /**
+     * Transfer replaces the receiver and clears the source without aliasing.
+     */
     @Test
     public void transferFromPopulatedOverwritesAndSeparatesObjects() {
         IntervalCoverage source = new IntervalCoverage1();

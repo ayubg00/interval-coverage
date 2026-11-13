@@ -28,8 +28,8 @@ public interface IntervalCoverage extends IntervalCoverageKernel {
      * @return the entire first qualifying gap within window, or empty
      * @requires window is not null and minimumLength > 0
      * @ensures firstGap contains the leftmost maximal uncovered span within
-     *          window whose length is at least minimumLength, or is empty
-     *          if none qualifies
+     *          window whose length is at least minimumLength, or is empty if
+     *          none qualifies
      */
     Optional<Span> firstGap(Span window, int minimumLength);
 

@@ -34,8 +34,8 @@ public final class ChunkReceipt {
         received.cover(new Span(2, 6));
         received.cover(new Span(0, 4));
 
-        out.println("Unique bytes received: " + received.coveredLength()
-                + "/" + file.end());
+        out.println("Unique bytes received: " + received.coveredLength() + "/"
+                + file.end());
         Optional<Span> missing = received.firstGap(file, 1);
         if (missing.isPresent()) {
             Span requested = missing.get();
