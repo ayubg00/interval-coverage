@@ -71,6 +71,28 @@ Following the completion of the portfolio project, please take some time to
 fill out the following reflection prompts. There is no word count, but at least
 a few sentences per question would be ideal.
 
+<!--
+Reflection working notes. Replace the seven TODO markers with your own answers
+and remove this block before submission. Use only work you personally did or
+verified, and follow your instructor's directions for disclosing AI assistance.
+
+1. Understanding: Describe how a design choice affected both clients. For
+   example, consider why minutes and bytes can share the same interval model.
+2. Knowledge gaps: Identify a behavior you initially found unclear and say
+   what you read, tried, or tested to understand it. Possible starting points
+   include touching endpoints, transfer semantics, and equality.
+3. Perspective: Name a part of the work you enjoyed or found frustrating.
+   Describe a specific moment that explains why.
+4. Skills: Identify skills you practiced and point to the artifact or result
+   that shows each one.
+5. Resume: Write action + technical task + verifiable result. Use the test
+   count or the two client programs only if they accurately reflect your role.
+6. Career: Explain whether scheduling, data transfer, library design, testing,
+   or another aspect made you more or less interested in a particular role.
+7. Next steps: Name one concrete next project or learning activity and a
+   specific instructor, TA, peer, or mentor you could ask for feedback.
+-->
+
 > A common gripe that students express is how much they feel the work they do
 > in class fails to map to the real world. Now that you've had a chance to
 > complete the portfolio project, how much better (or worse) do you think you
