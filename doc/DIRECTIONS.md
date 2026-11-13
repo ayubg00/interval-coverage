@@ -71,45 +71,29 @@ Following the completion of the portfolio project, please take some time to
 fill out the following reflection prompts. There is no word count, but at least
 a few sentences per question would be ideal.
 
-<!--
-Reflection working notes. Replace the seven TODO markers with your own answers
-and remove this block before submission. Use only work you personally did or
-verified, and follow your instructor's directions for disclosing AI assistance.
-
-1. Understanding: Describe how a design choice affected both clients. For
-   example, consider why minutes and bytes can share the same interval model.
-2. Knowledge gaps: Identify a behavior you initially found unclear and say
-   what you read, tried, or tested to understand it. Possible starting points
-   include touching endpoints, transfer semantics, and equality.
-3. Perspective: Name a part of the work you enjoyed or found frustrating.
-   Describe a specific moment that explains why.
-4. Skills: Identify skills you practiced and point to the artifact or result
-   that shows each one.
-5. Resume: Write action + technical task + verifiable result. Use the test
-   count or the two client programs only if they accurately reflect your role.
-6. Career: Explain whether scheduling, data transfer, library design, testing,
-   or another aspect made you more or less interested in a particular role.
-7. Next steps: Name one concrete next project or learning activity and a
-   specific instructor, TA, peer, or mentor you could ask for feedback.
--->
-
 > A common gripe that students express is how much they feel the work they do
 > in class fails to map to the real world. Now that you've had a chance to
 > complete the portfolio project, how much better (or worse) do you think you
 > understand software development and why?
 
-<!-- TODO: discuss -->
+I understand better why software is built in pieces. The same Java component can
+find an open meeting slot or find missing bytes in a file because both problems
+come down to finding a gap.
 
 > Also, did the portfolio project surface any gaps in your own knowledge of
 > software development. If so, what are those gaps and how did you address them?
 
-<!-- TODO: discuss -->
+One thing I needed more time with was how interfaces and classes fit together.
+Going over the concepts again and watching YouTube explanations helped me see
+that an interface describes what the code can do and a class defines how it works.
 
 > Finally, as a part of completing the portfolio project, to what extent has
 > your perspective of software development changed, if at all? In other words,
 > is software development something you still enjoy? If not, why not?
 
-<!-- TODO: discuss -->
+I still want to work in software engineering. The room example made the design
+feel more practical to me. Finding a time after a cancellation is a problem I
+can picture someone actually needing to solve.
 
 > One of the challenges of completing the portfolio project is picking up a lot
 > of skills on your own. Some of these skills are, of course, software skills.
@@ -117,25 +101,34 @@ verified, and follow your instructor's directions for disclosing AI assistance.
 > this process. Therefore, the first question is what skills did you pick up
 > through this process?
 
-<!-- TODO: discuss -->
+I got more comfortable reading Java interfaces and connecting them to the
+classes that implement them. I also got a better sense of what to look for in
+a unit test, like whether two ranges that touch should merge.
 
 > The follow-up question is: could you rephrase these skills you picked up
 > as bullet points that you could put on a resume? Try it below.
 
-<!-- TODO: discuss -->
+- Explained how a Java component can support both room scheduling and file
+  tracking through the same interface.
+- Identified edge cases for range operations, including overlapping ranges and
+  ranges that share an endpoint.
 
 > Next, how has working on this project affected your career trajectory?
 > In other words, do you now hate the topic you picked? Or, are you even more
 > interested in it? Both outcomes are valuable to your personal development.
 
-<!-- TODO: discuss -->
+I'm interested in software engineering, and this project gave me a better idea
+of the kind of work it can involve. I'd like to get more practice designing
+small components that other programs can use.
 
 > Finally, consider the skills you've picked up and your current career
 > trajectory. What are some things you could do to continue on your
 > career trajectory? Also, who are some mentors you could contact to help
 > you stay on your path?
 
-<!-- TODO: discuss -->
+I'd like to build another small Java project and write the tests as I go.
+I would ask Professor Grifski or one of my mentors to look over the design
+and point out what I could simplify.
 
 ## Assignment Advice
 
